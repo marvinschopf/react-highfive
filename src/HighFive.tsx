@@ -5,6 +5,7 @@ import PanToolIcon from "@material-ui/icons/PanTool";
 
 type HighFiveState = {
 	count: number;
+	interval: NodeJS.Timer;
 };
 
 type HighFiveProps = {
@@ -17,6 +18,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		super(props);
 		this.setState({
 			count: 0,
+			interval: null,
 		});
 	}
 
@@ -41,7 +43,16 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	componentDidMount() {
+		this.setState({
+			interval: setInterval(() => {
+				this.updateCounter();
+			}, 1000),
+		});
 		this.updateCounter();
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.state.interval);
 	}
 
 	render() {
