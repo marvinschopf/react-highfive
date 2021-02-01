@@ -24,5 +24,8 @@
   },
   "scripts": {
     "build": "tsc"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
