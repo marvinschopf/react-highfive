@@ -23,30 +23,28 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		});
 	}
 
-	async updateCounter() {
-		const response: Response = await fetch(this.props.fetchUrl);
-		if (response.status === 200) {
-			this.setState({
-				count: parseInt(await response.text()),
+	updateCounter() {
+		fetch(this.props.fetchUrl)
+			.then((response: Response) => {
+				return response.text();
+			})
+			.then((counter: string) => {
+				this.setState({
+					count: parseInt(counter),
+				});
 			});
-		} else {
-			this.setState({
-				count: 0,
-			});
-		}
 	}
 
-	async increaseCounter() {
-		const response: Response = await fetch(this.props.updateUrl);
-		if (response.status === 200) {
+	increaseCounter() {
+		fetch(this.props.updateUrl).then((response: Response) => {
 			this.setState({
 				count: this.state.count + 1,
 			});
-		}
+		});
 	}
 
-	async componentDidMount() {
-		await this.updateCounter();
+	componentDidMount() {
+		this.updateCounter();
 	}
 
 	render() {
@@ -62,8 +60,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 						<IconButton
 							aria-label="High Five"
 							color="primary"
-							onClick={async () => {
-								await this.increaseCounter();
+							onClick={() => {
+								this.increaseCounter();
 							}}
 						>
 							<PanToolIcon />
