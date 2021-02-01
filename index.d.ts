@@ -1,6 +1,8 @@
+/// <reference types="node" />
 import { Component } from "react";
 declare type HighFiveState = {
     count: number;
+    interval: NodeJS.Timer;
 };
 declare type HighFiveProps = {
     fetchUrl: string;
@@ -11,6 +13,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
     updateCounter(): void;
     increaseCounter(): void;
     componentDidMount(): void;
+    componentWillUnmount(): void;
     render(): JSX.Element;
 }
 export {};
