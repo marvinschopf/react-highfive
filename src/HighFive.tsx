@@ -64,6 +64,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 						horizontal: "left",
 					}}
 					message={this.state.count}
+					open={true}
 					action={
 						<IconButton
 							aria-label="High Five"
