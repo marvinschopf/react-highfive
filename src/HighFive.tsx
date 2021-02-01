@@ -16,10 +16,10 @@ type HighFiveProps = {
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	constructor(props: HighFiveProps) {
 		super(props);
-		this.setState({
+		this.state = {
 			count: 0,
 			interval: null,
-		});
+		};
 	}
 
 	updateCounter() {
