@@ -59,17 +59,15 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 					}}
 					message={this.state.count}
 					action={
-						<React.Fragment>
-							<IconButton
-								aria-label="High Five"
-								color="primary"
-								onClick={async () => {
-									await this.increaseCounter();
-								}}
-							>
-								<PanToolIcon />
-							</IconButton>
-						</React.Fragment>
+						<IconButton
+							aria-label="High Five"
+							color="primary"
+							onClick={async () => {
+								await this.increaseCounter();
+							}}
+						>
+							<PanToolIcon />
+						</IconButton>
 					}
 				/>
 			</div>
