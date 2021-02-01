@@ -15,9 +15,6 @@ type HighFiveProps = {
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	constructor(props: HighFiveProps) {
 		super(props);
-	}
-
-	componentWillMount() {
 		this.setState({
 			count: 0,
 		});
