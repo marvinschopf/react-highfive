@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        // Ensure that .d.ts files are created by tsc, but not .js files
+        "declaration": true,
+        //"emitDeclarationOnly": true,
+        // Ensure that Babel can safely transpile files in the TypeScript project
+        "isolatedModules": true,
+        "outDir": "dist",
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        },
+        "target": "es5",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
