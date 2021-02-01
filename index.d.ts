@@ -8,10 +8,9 @@ declare type HighFiveProps = {
 };
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
     constructor(props: HighFiveProps);
-    componentWillMount(): void;
-    updateCounter(): Promise<void>;
-    increaseCounter(): Promise<void>;
-    componentDidMount(): Promise<void>;
+    updateCounter(): void;
+    increaseCounter(): void;
+    componentDidMount(): void;
     render(): JSX.Element;
 }
 export {};
