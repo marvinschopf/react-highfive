@@ -6,10 +6,24 @@ declare type HighFiveState = {
     interval: NodeJS.Timer;
 };
 declare type HighFiveProps = {
-    fetchUrl?: string;
-    updateUrl?: string;
+    refreshRate: number;
+    fetchUrl: string | false;
+    updateUrl: string | false;
+    anchorOrigin: {
+        horizontal: "right" | "left" | "center";
+        vertical: "bottom" | "top";
+    };
 };
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
+    static defaultProps: {
+        refreshRate: number;
+        fetchUrl: boolean;
+        updateUrl: boolean;
+        anchorOrigin: {
+            horizontal: string;
+            vertical: string;
+        };
+    };
     refConfetti: RewardElement;
     fetchUrl: string;
     updateUrl: string;
