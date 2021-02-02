@@ -62,24 +62,24 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	render() {
 		return (
 			<div>
-				<Snackbar
-					anchorOrigin={{
-						vertical: "bottom",
-						horizontal: "left",
+				<Rewards
+					ref={(ref: RewardElement) => {
+						this.setState({ refConfetti: ref });
 					}}
-					message={this.state.count}
-					open={true}
-					action={
-						<Rewards
-							ref={(ref: RewardElement) => {
-								this.setState({ refConfetti: ref });
-							}}
-							type="confetti"
-							config={{
-								elementCount: 200,
-								spread: 159,
-							}}
-						>
+					type="confetti"
+					config={{
+						elementCount: 200,
+						spread: 159,
+					}}
+				>
+					<Snackbar
+						anchorOrigin={{
+							vertical: "bottom",
+							horizontal: "left",
+						}}
+						message={this.state.count}
+						open={true}
+						action={
 							<IconButton
 								aria-label="High Five"
 								color="primary"
@@ -89,9 +89,9 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 							>
 								<PanToolIcon />
 							</IconButton>
-						</Rewards>
-					}
-				/>
+						}
+					/>
+				</Rewards>
 			</div>
 		);
 	}
