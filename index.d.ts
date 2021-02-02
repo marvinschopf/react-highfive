@@ -1,9 +1,10 @@
 /// <reference types="node" />
 import { Component } from "react";
+import { RewardElement } from "react-rewards";
 declare type HighFiveState = {
     count: number;
     interval: NodeJS.Timer;
-    refConfetti: any;
+    refConfetti: RewardElement;
 };
 declare type HighFiveProps = {
     fetchUrl: string;
