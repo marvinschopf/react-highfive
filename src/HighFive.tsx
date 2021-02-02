@@ -10,23 +10,31 @@ type HighFiveState = {
 };
 
 type HighFiveProps = {
-	fetchUrl?: string;
-	updateUrl?: string;
+	refreshRate: number;
+	fetchUrl: string | false;
+	updateUrl: string | false;
+	anchorOrigin: {
+		horizontal: "right" | "left" | "center";
+		vertical: "bottom" | "top";
+	};
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
+	public static defaultProps = {
+		refreshRate: 1000,
+		fetchUrl: false,
+		updateUrl: false,
+		anchorOrigin: {
+			horizontal: "right",
+			vertical: "bottom",
+		},
+	};
+
 	refConfetti: RewardElement;
 	fetchUrl: string;
 	updateUrl: string;
 	constructor(props: HighFiveProps) {
 		super(props);
-		if (props.fetchUrl && props.updateUrl) {
-			this.fetchUrl = props.fetchUrl;
-			this.updateUrl = props.updateUrl;
-		} else {
-			this.fetchUrl = `https://highfive.js.org/srv/get?hostname=${window.location.hostname}`;
-			this.updateUrl = `https://highfive.js.org/srv/update?hostname=${window.location.hostname}`;
-		}
 		this.state = {
 			count: 0,
 			interval: null,
@@ -34,31 +42,39 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	updateCounter() {
-		fetch(this.props.fetchUrl)
-			.then((response: Response) => {
-				return response.text();
-			})
-			.then((counter: string) => {
-				this.setState({
-					count: parseInt(counter),
+		if (this.props.fetchUrl != false) {
+			fetch(this.props.fetchUrl)
+				.then((response: Response) => {
+					return response.text();
+				})
+				.then((counter: string) => {
+					this.setState({
+						count: parseInt(counter),
+					});
 				});
-			});
+		}
 	}
 
 	increaseCounter() {
 		this.refConfetti.rewardMe();
-		fetch(this.props.updateUrl).then((response: Response) => {
+		if (this.props.updateUrl != false) {
+			fetch(this.props.updateUrl).then((response: Response) => {
+				this.setState({
+					count: this.state.count + 1,
+				});
+			});
+		} else {
 			this.setState({
 				count: this.state.count + 1,
 			});
-		});
+		}
 	}
 
 	componentDidMount() {
 		this.setState({
 			interval: setInterval(() => {
 				this.updateCounter();
-			}, 1000),
+			}, this.props.refreshRate),
 		});
 		this.updateCounter();
 	}
@@ -72,8 +88,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			<div>
 				<Snackbar
 					anchorOrigin={{
-						vertical: "bottom",
-						horizontal: "left",
+						vertical: this.props.anchorOrigin.vertical,
+						horizontal: this.props.anchorOrigin.horizontal,
 					}}
 					message={<b>{this.state.count} high fives given!</b>}
 					open={true}
@@ -85,7 +101,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 							type="confetti"
 							config={{
 								elementCount: 200,
-								spread: 159,
+								spread: 160,
 							}}
 						>
 							<IconButton
