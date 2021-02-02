@@ -7,7 +7,6 @@ import Rewards, { RewardElement } from "react-rewards";
 type HighFiveState = {
 	count: number;
 	interval: NodeJS.Timer;
-	refConfetti: RewardElement;
 };
 
 type HighFiveProps = {
@@ -16,12 +15,12 @@ type HighFiveProps = {
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
+	refConfetti: RewardElement;
 	constructor(props: HighFiveProps) {
 		super(props);
 		this.state = {
 			count: 0,
 			interval: null,
-			refConfetti: null,
 		};
 	}
 
@@ -38,7 +37,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	increaseCounter() {
-		this.state.refConfetti.rewardMe();
+		this.refConfetti.rewardMe();
 		fetch(this.props.updateUrl).then((response: Response) => {
 			this.setState({
 				count: this.state.count + 1,
@@ -64,7 +63,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			<div>
 				<Rewards
 					ref={(ref: RewardElement) => {
-						this.setState({ refConfetti: ref });
+						this.refConfetti = ref;
 					}}
 					type="confetti"
 					config={{
