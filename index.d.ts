@@ -4,13 +4,13 @@ import { RewardElement } from "react-rewards";
 declare type HighFiveState = {
     count: number;
     interval: NodeJS.Timer;
-    refConfetti: RewardElement;
 };
 declare type HighFiveProps = {
     fetchUrl: string;
     updateUrl: string;
 };
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
+    refConfetti: RewardElement;
     constructor(props: HighFiveProps);
     updateCounter(): void;
     increaseCounter(): void;
