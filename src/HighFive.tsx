@@ -13,7 +13,7 @@ type HighFiveProps = {
 	refreshRate: number;
 	fetchUrl: string | false;
 	updateUrl: string | false;
-	anchorOrigin: {
+	position: {
 		horizontal: "right" | "left" | "center";
 		vertical: "bottom" | "top";
 	};
@@ -24,7 +24,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		refreshRate: 1000,
 		fetchUrl: false,
 		updateUrl: false,
-		anchorOrigin: {
+		position: {
 			horizontal: "right",
 			vertical: "bottom",
 		},
@@ -88,8 +88,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			<div>
 				<Snackbar
 					anchorOrigin={{
-						vertical: this.props.anchorOrigin.vertical,
-						horizontal: this.props.anchorOrigin.horizontal,
+						vertical: this.props.position.vertical,
+						horizontal: this.props.position.horizontal,
 					}}
 					message={<b>{this.state.count} high fives given!</b>}
 					open={true}

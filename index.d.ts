@@ -9,7 +9,7 @@ declare type HighFiveProps = {
     refreshRate: number;
     fetchUrl: string | false;
     updateUrl: string | false;
-    anchorOrigin: {
+    position: {
         horizontal: "right" | "left" | "center";
         vertical: "bottom" | "top";
     };
@@ -19,7 +19,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
         refreshRate: number;
         fetchUrl: boolean;
         updateUrl: boolean;
-        anchorOrigin: {
+        position: {
             horizontal: string;
             vertical: string;
         };
