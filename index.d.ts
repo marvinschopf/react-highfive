@@ -3,6 +3,7 @@ import { Component } from "react";
 declare type HighFiveState = {
     count: number;
     interval: NodeJS.Timer;
+    refConfetti: any;
 };
 declare type HighFiveProps = {
     fetchUrl: string;
