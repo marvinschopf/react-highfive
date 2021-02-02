@@ -66,7 +66,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 						vertical: "bottom",
 						horizontal: "left",
 					}}
-					message={this.state.count}
+					message={<b>{this.state.count} high fives given!</b>}
 					open={true}
 					action={
 						<Rewards
