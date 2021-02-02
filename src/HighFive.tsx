@@ -67,8 +67,10 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 					style={{
 						position: "absolute",
 						//zIndex: -1,
+						height: "100%",
+						width: "100%",
 						bottom: "50px",
-						marginLeft: "50px",
+						marginLeft: "5px",
 					}}
 				/>
 				<Snackbar
