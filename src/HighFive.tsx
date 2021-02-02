@@ -10,14 +10,23 @@ type HighFiveState = {
 };
 
 type HighFiveProps = {
-	fetchUrl: string;
-	updateUrl: string;
+	fetchUrl?: string;
+	updateUrl?: string;
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	refConfetti: RewardElement;
+	fetchUrl: string;
+	updateUrl: string;
 	constructor(props: HighFiveProps) {
 		super(props);
+		if (props.fetchUrl && props.updateUrl) {
+			this.fetchUrl = props.fetchUrl;
+			this.updateUrl = props.updateUrl;
+		} else {
+			this.fetchUrl = `https://highfive.js.org/srv/get?hostname=${window.location.hostname}`;
+			this.updateUrl = `https://highfive.js.org/srv/update?hostname=${window.location.hostname}`;
+		}
 		this.state = {
 			count: 0,
 			interval: null,
