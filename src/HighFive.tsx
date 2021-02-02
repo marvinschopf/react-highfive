@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
 import PanToolIcon from "@material-ui/icons/PanTool";
+import Confetti from "react-canvas-confetti";
 
 type HighFiveState = {
 	count: number;
 	interval: NodeJS.Timer;
+	refConfetti: any;
 };
 
 type HighFiveProps = {
@@ -19,6 +21,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		this.state = {
 			count: 0,
 			interval: null,
+			refConfetti: null,
 		};
 	}
 
@@ -35,6 +38,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	increaseCounter() {
+		this.state.refConfetti();
 		fetch(this.props.updateUrl).then((response: Response) => {
 			this.setState({
 				count: this.state.count + 1,
@@ -58,6 +62,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	render() {
 		return (
 			<div>
+				<Confetti refConfetti={(ref) => this.setState({ refConfetti: ref })} />
 				<Snackbar
 					anchorOrigin={{
 						vertical: "bottom",
