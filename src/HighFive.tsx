@@ -65,12 +65,12 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 				<Confetti
 					refConfetti={(ref) => this.setState({ refConfetti: ref })}
 					style={{
-						position: "absolute",
+						position: "fixed",
 						//zIndex: -1,
 						height: "100%",
 						width: "100%",
 						bottom: "5px",
-						paddingLeft: "10px",
+						marginLeft: "200px",
 					}}
 				/>
 				<Snackbar
