@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
 import PanToolIcon from "@material-ui/icons/PanTool";
-import Confetti from "react-canvas-confetti";
+import Rewards, { RewardElement } from "react-rewards";
 
 type HighFiveState = {
 	count: number;
 	interval: NodeJS.Timer;
-	refConfetti: any;
+	refConfetti: RewardElement;
 };
 
 type HighFiveProps = {
@@ -38,12 +38,6 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	increaseCounter() {
-		this.state.refConfetti({
-			origin: {
-				x: 0.12,
-				y: 0.08
-			}
-		});
 		fetch(this.props.updateUrl).then((response: Response) => {
 			this.setState({
 				count: this.state.count + 1,
@@ -67,14 +61,6 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	render() {
 		return (
 			<div>
-				<Confetti
-					refConfetti={(ref) => this.setState({ refConfetti: ref })}
-					style={{
-						position: "absolute",
-						width: "100%",
-						bottom: "0px"
-					}}
-				/>
 				<Snackbar
 					anchorOrigin={{
 						vertical: "bottom",
@@ -83,15 +69,26 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 					message={this.state.count}
 					open={true}
 					action={
-						<IconButton
-							aria-label="High Five"
-							color="primary"
-							onClick={() => {
-								this.increaseCounter();
+						<Rewards
+							ref={(ref: RewardElement) => {
+								this.setState({ refConfetti: ref });
+							}}
+							type="confetti"
+							config={{
+								elementCount: 200,
+								spread: 159,
 							}}
 						>
-							<PanToolIcon />
-						</IconButton>
+							<IconButton
+								aria-label="High Five"
+								color="primary"
+								onClick={() => {
+									this.increaseCounter();
+								}}
+							>
+								<PanToolIcon />
+							</IconButton>
+						</Rewards>
 					}
 				/>
 			</div>
