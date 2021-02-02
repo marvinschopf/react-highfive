@@ -1,6 +1,6 @@
 {
 	"name": "react-highfive",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"main": "dist/HighFive.js",
 	"types": "index.d.ts",
 	"repository": "https://github.com/marvinschopf/react-highfive",
