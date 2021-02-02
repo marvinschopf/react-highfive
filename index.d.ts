@@ -6,11 +6,13 @@ declare type HighFiveState = {
     interval: NodeJS.Timer;
 };
 declare type HighFiveProps = {
-    fetchUrl: string;
-    updateUrl: string;
+    fetchUrl?: string;
+    updateUrl?: string;
 };
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
     refConfetti: RewardElement;
+    fetchUrl: string;
+    updateUrl: string;
     constructor(props: HighFiveProps);
     updateCounter(): void;
     increaseCounter(): void;
