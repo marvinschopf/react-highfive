@@ -38,7 +38,12 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	increaseCounter() {
-		this.state.refConfetti();
+		this.state.refConfetti({
+			origin: {
+				x: 0.12,
+				y: 0.08
+			}
+		});
 		fetch(this.props.updateUrl).then((response: Response) => {
 			this.setState({
 				count: this.state.count + 1,
@@ -64,13 +69,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			<div>
 				<Confetti
 					refConfetti={(ref) => this.setState({ refConfetti: ref })}
-					style={{
-						position: "absolute",
-						left: "80px",
-						bottom: "30px",
-						height: "auto",
-						minHeight: "600px"
-					}}
+					
 				/>
 				<Snackbar
 					anchorOrigin={{
