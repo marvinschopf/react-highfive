@@ -16,8 +16,7 @@
 	"dependencies": {
 		"@material-ui/core": "^4.11.3",
 		"@material-ui/icons": "^4.11.2",
-		"csstype": "2.5.2",
-		"react-canvas-confetti": "1.1.0"
+		"csstype": "2.5.2"
 	},
 	"peerDependencies": {
 		"react": "^17.0.1"

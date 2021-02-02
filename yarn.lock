@@ -120,11 +120,6 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
-canvas-confetti@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.3.2.tgz#8376f50bb7a68f7f048c5ee6ad77f95d0cd0948d"
-  integrity sha512-fLnMiI7eueyQUXG2msPnOtxjf/kvyEPm6w9ycherNtjc9qtfXcvlyZtoNfA7RClcAMhNOcKghV3z2te9Pusr7g==
-
 clsx@^1.0.4:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
@@ -301,13 +296,6 @@ prop-types@^15.6.2, prop-types@^15.7.2:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.8.1"
-
-react-canvas-confetti@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-canvas-confetti/-/react-canvas-confetti-1.1.0.tgz#55698a6d582ba92a6c9a0294570b772c86c01ec0"
-  integrity sha512-ckjGkGd1l5Ie8Rag5ugd8F5t9F1QLrqNO5E1ipGOkpcsqkkhvCFALhGD649tGbI+83c9a/yJBy22nnydxcOUcA==
-  dependencies:
-    canvas-confetti "1.3.2"
 
 react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
