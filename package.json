@@ -24,7 +24,7 @@
 		"@material-ui/core": "^4.11.3",
 		"@material-ui/icons": "^4.11.2",
 		"csstype": "2.5.2",
-		"react-rewards": "^1.1.2"
+		"rewards-lite": "^1.0.2"
 	},
 	"peerDependencies": {
 		"react": "^17.0.1"

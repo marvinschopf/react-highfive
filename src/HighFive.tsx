@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
 import PanToolIcon from "@material-ui/icons/PanTool";
-import Rewards, { RewardElement } from "react-rewards";
+import Rewards, { RewardElement } from "rewards-lite";
 
 type HighFiveState = {
 	count: number;

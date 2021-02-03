@@ -378,11 +378,6 @@ loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-lottie-web@^5.5.7:
-  version "5.7.6"
-  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.7.6.tgz#f20e5555ff120dc1e07ba53adb40061e822f3c48"
-  integrity sha512-qn/KYMI4QQvFDhtoxs0RPkn9uZKhDB9keE5BKgbJlSRfNEZpRiDlwBE9ibYz4nPhbyE+NUlt8IRIVR7g5OSX3w==
-
 make-dir@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
@@ -508,14 +503,6 @@ react-pose@^4.0.8:
     popmotion-pose "^3.4.10"
     tslib "^1.10.0"
 
-react-rewards@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-rewards/-/react-rewards-1.1.2.tgz#0bc3a429cbba5c018a3cddcc3b7803e76ea31181"
-  integrity sha512-PaMv6m5slvjJjkuRLMyN/0cmMQ63OXyVnh1R3jUgZRgtePbfJZNtGgSKBjYjesSeSmRUV1P+o0scQhTOulLoEg==
-  dependencies:
-    lottie-web "^5.5.7"
-    react-pose "^4.0.8"
-
 react-transition-group@^4.4.0:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
@@ -537,6 +524,13 @@ resolve@1.12.0:
   integrity sha512-B/dOmuoAik5bKcD6s6nXDCjzUKnaDvdkRyAk6rsmsKLipWj4797iothd7jmmUhWTfinVMU+wc56rYKsit2Qy4w==
   dependencies:
     path-parse "^1.0.6"
+
+rewards-lite@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/rewards-lite/-/rewards-lite-1.0.2.tgz#4887bf11b26efc59d24d0e75ac6139d919044898"
+  integrity sha512-Hu6YQ4eRf9Ov+y9h1E/9LoYI1y/QrVBA68qufoetF7jZ4NLflGwCvmtiO3wA1vO70QMeW/hmaztHqVGOVQVnCQ==
+  dependencies:
+    react-pose "^4.0.8"
 
 rollup-plugin-typescript2@^0.25.2:
   version "0.25.3"
