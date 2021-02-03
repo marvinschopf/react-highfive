@@ -5,7 +5,14 @@
 	"types": "index.d.ts",
 	"repository": "https://github.com/marvinschopf/react-highfive",
 	"author": "Marvin Schopf <marvin@schopf.biz>",
+	"homepage": "https://highfive.js.org",
 	"license": "GPL-3.0-or-later",
+	"keywords": [
+		"react",
+		"react high five",
+		"high five",
+		"react confetti"
+	],
 	"private": false,
 	"devDependencies": {
 		"@types/node": "^14.14.22",
