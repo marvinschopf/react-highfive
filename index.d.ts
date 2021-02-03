@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import { Component } from "react";
-import { RewardElement } from "react-rewards";
+import { RewardElement } from "rewards-lite";
 declare type HighFiveState = {
     count: number;
     interval: NodeJS.Timer;
