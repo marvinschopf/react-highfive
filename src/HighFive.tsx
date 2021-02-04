@@ -21,11 +21,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
 import PanToolIcon from "@material-ui/icons/PanTool";
 import Rewards, { RewardElement } from "rewards-lite";
-import CountUp from "react-countup";
+import { useCountUp } from "react-countup";
 
 type HighFiveState = {
 	count: number;
 	interval: NodeJS.Timer;
+	animatedCounter: any;
 };
 
 type HighFiveProps = {
@@ -57,6 +58,11 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		this.state = {
 			count: 0,
 			interval: null,
+			animatedCounter: useCountUp({
+				start: 0,
+				end: 0,
+				decimal: ".",
+			}),
 		};
 	}
 
@@ -70,6 +76,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 					this.setState({
 						count: parseInt(counter),
 					});
+					this.state.animatedCounter.update(this.state.count);
 				});
 		}
 	}
@@ -81,11 +88,13 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 				this.setState({
 					count: this.state.count + 1,
 				});
+				this.state.animatedCounter.update(this.state.count);
 			});
 		} else {
 			this.setState({
 				count: this.state.count + 1,
 			});
+			this.state.animatedCounter.update(this.state.count);
 		}
 	}
 
@@ -110,17 +119,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 						vertical: this.props.position.vertical,
 						horizontal: this.props.position.horizontal,
 					}}
-					message={
-						<b>
-							<CountUp
-								start={this.state.count}
-								end={this.state.count}
-								delay={0}
-								decimal="."
-							/>{" "}
-							high fives given!
-						</b>
-					}
+					message={<b>{this.state.animatedCounter} high fives given!</b>}
 					open={true}
 					action={
 						<Rewards
