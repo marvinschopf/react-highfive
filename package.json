@@ -6,7 +6,7 @@
 	"repository": "https://github.com/marvinschopf/react-highfive",
 	"author": "Marvin Schopf <marvin@schopf.biz>",
 	"homepage": "https://highfive.js.org",
-	"license": "GPL-3.0-or-later",
+	"license": "Apache-2.0",
 	"keywords": [
 		"react",
 		"react high five",
