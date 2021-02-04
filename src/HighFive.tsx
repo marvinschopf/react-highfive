@@ -1,4 +1,4 @@
-/**!
+/**
  *
  *  react-highfive
  *  Copyright (C) 2021 Marvin Schopf
