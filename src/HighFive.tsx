@@ -21,12 +21,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
 import PanToolIcon from "@material-ui/icons/PanTool";
 import Rewards, { RewardElement } from "rewards-lite";
-import { useCountUp } from "react-countup";
+import CountUp from "react-countup";
 
 type HighFiveState = {
 	count: number;
 	interval: NodeJS.Timer;
-	animatedCounter: any;
+	oldCount: number;
 };
 
 type HighFiveProps = {
@@ -37,6 +37,8 @@ type HighFiveProps = {
 		horizontal: "right" | "left" | "center";
 		vertical: "bottom" | "top";
 	};
+	prefix: string;
+	suffix: string;
 	countDuration: number;
 };
 
@@ -49,6 +51,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			horizontal: "right",
 			vertical: "bottom",
 		},
+		prefix: "",
+		suffix: " high fives given!",
 		countDuration: 3,
 	};
 
@@ -60,12 +64,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		this.state = {
 			count: 0,
 			interval: null,
-			animatedCounter: useCountUp({
-				start: 0,
-				end: 0,
-				separator: ".",
-				duration: this.props.countDuration,
-			}),
+			oldCount: 0,
 		};
 	}
 
@@ -77,9 +76,9 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 				})
 				.then((counter: string) => {
 					this.setState({
+						oldCount: this.state.count,
 						count: parseInt(counter),
 					});
-					this.state.animatedCounter.update(this.state.count);
 				});
 		}
 	}
@@ -89,15 +88,15 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		if (this.props.updateUrl != false) {
 			fetch(this.props.updateUrl).then((response: Response) => {
 				this.setState({
+					oldCount: this.state.count,
 					count: this.state.count + 1,
 				});
-				this.state.animatedCounter.update(this.state.count);
 			});
 		} else {
 			this.setState({
+				oldCount: this.state.count,
 				count: this.state.count + 1,
 			});
-			this.state.animatedCounter.update(this.state.count);
 		}
 	}
 
@@ -122,7 +121,16 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 						vertical: this.props.position.vertical,
 						horizontal: this.props.position.horizontal,
 					}}
-					message={<b>{this.state.animatedCounter} high fives given!</b>}
+					message={
+						<CountUp
+							start={this.state.oldCount}
+							end={this.state.count}
+							separator={"."}
+							duration={this.props.countDuration}
+							prefix={this.props.prefix}
+							suffix={this.props.suffix}
+						/>
+					}
 					open={true}
 					action={
 						<Rewards
