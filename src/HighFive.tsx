@@ -16,12 +16,12 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
 import React, { Component } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
 import PanToolIcon from "@material-ui/icons/PanTool";
 import Rewards, { RewardElement } from "rewards-lite";
+import CountUp from "react-countup";
 
 type HighFiveState = {
 	count: number;
@@ -110,7 +110,17 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 						vertical: this.props.position.vertical,
 						horizontal: this.props.position.horizontal,
 					}}
-					message={<b>{this.state.count} high fives given!</b>}
+					message={
+						<b>
+							<CountUp
+								start={this.state.count}
+								end={this.state.count}
+								delay={0}
+								decimal="."
+							/>{" "}
+							high fives given!
+						</b>
+					}
 					open={true}
 					action={
 						<Rewards
