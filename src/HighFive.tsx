@@ -40,7 +40,7 @@ type HighFiveProps = {
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	public static defaultProps = {
-		refreshRate: 1000,
+		refreshRate: 5000,
 		fetchUrl: false,
 		updateUrl: false,
 		position: {
