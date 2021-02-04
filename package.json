@@ -4,7 +4,11 @@
 	"main": "dist/HighFive.js",
 	"types": "dist/HighFive.d.ts",
 	"repository": "https://github.com/marvinschopf/react-highfive",
-	"author": "Marvin Schopf <marvin@schopf.biz>",
+	"author": {
+		"name": "Marvin Schopf",
+		"email": "marvin@schopf.biz",
+		"url": "https://www.marvinschopf.com"
+	},
 	"homepage": "https://highfive.js.org",
 	"license": "Apache-2.0",
 	"keywords": [
