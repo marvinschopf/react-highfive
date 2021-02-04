@@ -37,6 +37,7 @@ type HighFiveProps = {
 		horizontal: "right" | "left" | "center";
 		vertical: "bottom" | "top";
 	};
+	countDuration: number;
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
@@ -48,6 +49,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			horizontal: "right",
 			vertical: "bottom",
 		},
+		countDuration: 3,
 	};
 
 	refConfetti: RewardElement;
@@ -61,7 +63,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			animatedCounter: useCountUp({
 				start: 0,
 				end: 0,
-				decimal: ".",
+				separator: ".",
+				duration: this.props.countDuration,
 			}),
 		};
 	}
