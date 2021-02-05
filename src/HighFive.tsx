@@ -114,8 +114,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 
 	updateCounter() {
 		// Check whether a server has been specified, if so, request the current count from the server.
-		if (this.props.fetchUrl != false) {
-			fetch(this.props.fetchUrl)
+		if (this.state.fetchUrl != false) {
+			fetch(this.state.fetchUrl)
 				.then((response: Response) => {
 					return response.text();
 				})
@@ -133,8 +133,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		this.refConfetti.rewardMe();
 
 		// Check again whether a server has been specified. If so, update the counter via a simple HTTP GET ping.
-		if (this.props.updateUrl != false) {
-			fetch(this.props.updateUrl).then((response: Response) => {
+		if (this.state.updateUrl != false) {
+			fetch(this.state.updateUrl).then((response: Response) => {
 				this.setState({
 					oldCount: this.state.count,
 					count: this.state.count + 1,
@@ -151,7 +151,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 
 	componentDidMount() {
 		// Start timer only if a $fetchUrl is set
-		if (this.props.fetchUrl != false) {
+		if (this.state.fetchUrl != false) {
 			// If component is mounted, start timer that updates counter every $refreshRate miliseconds.
 			this.setState({
 				interval: setInterval(() => {
