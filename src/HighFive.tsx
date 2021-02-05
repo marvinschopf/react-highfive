@@ -15,7 +15,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  *
- *  @copyright Marvin Schopf 2021
+ *  @copyright 2021 Marvin Schopf
  *  @license Apache-2.0
  *
  **/
