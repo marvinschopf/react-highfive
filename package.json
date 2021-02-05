@@ -35,6 +35,8 @@
 		"react": "^17.0.1"
 	},
 	"scripts": {
-		"build": "tsc"
+		"build": "tsc",
+		"clean": "rm -rf dist/",
+		"prebuild": "yarn clean"
 	}
 }
