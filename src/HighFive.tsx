@@ -150,17 +150,23 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	componentDidMount() {
-		// If component is mounted, start timer that updates counter every $refreshRate miliseconds.
-		this.setState({
-			interval: setInterval(() => {
-				this.updateCounter();
-			}, this.props.refreshRate),
-		});
-		this.updateCounter();
+		// Start timer only if a $fetchUrl is set
+		if (this.props.fetchUrl != false) {
+			// If component is mounted, start timer that updates counter every $refreshRate miliseconds.
+			this.setState({
+				interval: setInterval(() => {
+					this.updateCounter();
+				}, this.props.refreshRate),
+			});
+			this.updateCounter();
+		}
 	}
 
 	componentWillUnmount() {
-		clearInterval(this.state.interval);
+		// Delete timer if set
+		if (this.props.fetchUrl != false) {
+			clearInterval(this.state.interval);
+		}
 	}
 
 	render() {
