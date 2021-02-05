@@ -41,18 +41,18 @@ type HighFiveState = {
 };
 
 type HighFiveProps = {
-	refreshRate: number;
-	fetchUrl: string | false;
-	updateUrl: string | false;
-	position: {
+	refreshRate?: number;
+	fetchUrl?: string | false;
+	updateUrl?: string | false;
+	position?: {
 		horizontal: "right" | "left" | "center";
 		vertical: "bottom" | "top";
 	};
-	prefix: string;
-	suffix: string;
-	countDuration: number;
-	hosted: boolean;
-	hostedIdentifier: string;
+	prefix?: string;
+	suffix?: string;
+	countDuration?: number;
+	hosted?: boolean;
+	hostedIdentifier?: string;
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
