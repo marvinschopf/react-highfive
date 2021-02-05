@@ -14,7 +14,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
- * 
+ *
  *  @copyright Marvin Schopf 2021
  *  @license Apache-2.0
  *
@@ -27,10 +27,17 @@ import PanToolIcon from "@material-ui/icons/PanTool";
 import Rewards, { RewardElement } from "rewards-lite";
 import CountUp from "react-countup";
 
+const HOSTED_FETCH_URL: string = "https://api.highfivejs.org/v1/get";
+const HOSTED_UPDATE_URL: string = "https://api.highfivejs.org/v1/update";
+
 type HighFiveState = {
 	count: number;
 	interval: NodeJS.Timer;
 	oldCount: number;
+	fetchUrl: string | false;
+	updateUrl: string | false;
+	hostedIdentifier: string | false;
+	hosted: boolean;
 };
 
 type HighFiveProps = {
@@ -44,6 +51,8 @@ type HighFiveProps = {
 	prefix: string;
 	suffix: string;
 	countDuration: number;
+	hosted: boolean;
+	hostedIdentifier: string;
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
@@ -58,6 +67,8 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		prefix: "",
 		suffix: " high fives given!",
 		countDuration: 3,
+		hosted: false,
+		hostedIdentifier: "",
 	};
 
 	refConfetti: RewardElement;
@@ -69,7 +80,27 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			count: 0,
 			interval: null,
 			oldCount: 0,
+			fetchUrl: false,
+			updateUrl: false,
+			hostedIdentifier: this.props.hosted ? this.props.hostedIdentifier : false,
+			hosted: this.props.hosted,
 		};
+		if (
+			this.props.hosted &&
+			(!this.state.hostedIdentifier || this.state.hostedIdentifier.length == 0)
+		) {
+			this.setState({
+				hosted: false,
+			});
+		}
+		this.setState({
+			fetchUrl: this.props.hosted
+				? `${HOSTED_FETCH_URL}?id=${this.state.hostedIdentifier}`
+				: this.props.fetchUrl,
+			updateUrl: this.props.hosted
+				? `${HOSTED_UPDATE_URL}?id=${this.state.hostedIdentifier}`
+				: this.props.updateUrl,
+		});
 	}
 
 	updateCounter() {
