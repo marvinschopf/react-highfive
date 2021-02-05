@@ -27,9 +27,12 @@ import PanToolIcon from "@material-ui/icons/PanTool";
 import Rewards, { RewardElement } from "rewards-lite";
 import CountUp from "react-countup";
 
+
+// Define URLs of the hosted service
 const HOSTED_FETCH_URL: string = "https://api.highfivejs.org/v1/get";
 const HOSTED_UPDATE_URL: string = "https://api.highfivejs.org/v1/update";
 
+// Define type of component state
 type HighFiveState = {
 	count: number;
 	interval: NodeJS.Timer;
@@ -40,6 +43,7 @@ type HighFiveState = {
 	hosted: boolean;
 };
 
+// Define type of properties
 type HighFiveProps = {
 	refreshRate?: number;
 	fetchUrl?: string | false;
@@ -56,6 +60,8 @@ type HighFiveProps = {
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
+
+	// Define default properties
 	public static defaultProps = {
 		refreshRate: 5000,
 		fetchUrl: false,
@@ -82,17 +88,22 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			oldCount: 0,
 			fetchUrl: false,
 			updateUrl: false,
+			// Check if hosted service is used, if yes set hosted identifier in state to hosted identifier in properties
 			hostedIdentifier: this.props.hosted ? this.props.hostedIdentifier : false,
 			hosted: this.props.hosted,
 		};
+
+		// If hosted service is used, check if identifier is specified.
 		if (
 			this.props.hosted &&
 			(!this.state.hostedIdentifier || this.state.hostedIdentifier.length == 0)
 		) {
+			// If the hosted service is to be used but no identifier has been specified, do not use the hosted service after all.
 			this.setState({
 				hosted: false,
 			});
 		}
+		// Build URLs to the hosted service based on the previously specified service URLs and the identifier
 		this.setState({
 			fetchUrl: this.props.hosted
 				? `${HOSTED_FETCH_URL}?id=${this.state.hostedIdentifier}`
@@ -104,6 +115,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	updateCounter() {
+		// Check whether a server has been specified, if so, request the current count from the server.
 		if (this.props.fetchUrl != false) {
 			fetch(this.props.fetchUrl)
 				.then((response: Response) => {
@@ -119,7 +131,10 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	increaseCounter() {
+		// In any case, show an animation when "a high-five has been given".
 		this.refConfetti.rewardMe();
+
+		// Check again whether a server has been specified. If so, update the counter via a simple HTTP GET ping.
 		if (this.props.updateUrl != false) {
 			fetch(this.props.updateUrl).then((response: Response) => {
 				this.setState({
@@ -128,6 +143,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 				});
 			});
 		} else {
+			// Even if no server has been specified, update the local counter anyway
 			this.setState({
 				oldCount: this.state.count,
 				count: this.state.count + 1,
@@ -136,6 +152,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	}
 
 	componentDidMount() {
+		// If component is mounted, start timer that updates counter every $refreshRate miliseconds.
 		this.setState({
 			interval: setInterval(() => {
 				this.updateCounter();
@@ -157,6 +174,7 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 						horizontal: this.props.position.horizontal,
 					}}
 					message={
+						// Animate increasing the number
 						<CountUp
 							start={this.state.oldCount}
 							end={this.state.count}
