@@ -38,7 +38,6 @@ type HighFiveState = {
 	oldCount: number;
 	fetchUrl: string | false;
 	updateUrl: string | false;
-	hostedIdentifier: string | false;
 	hosted: boolean;
 };
 
@@ -55,7 +54,6 @@ type HighFiveProps = {
 	suffix?: string;
 	countDuration?: number;
 	hosted?: boolean;
-	hostedIdentifier?: string;
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
@@ -72,7 +70,6 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 		suffix: " high fives given!",
 		countDuration: 3,
 		hosted: false,
-		hostedIdentifier: "",
 	};
 
 	refConfetti: RewardElement;
@@ -86,29 +83,13 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 			oldCount: 0,
 			fetchUrl: false,
 			updateUrl: false,
-			// Check if hosted service is used, if yes set hosted identifier in state to hosted identifier in properties
-			hostedIdentifier: this.props.hosted ? this.props.hostedIdentifier : false,
 			hosted: this.props.hosted,
 		};
 
-		// If hosted service is used, check if identifier is specified.
-		if (
-			this.props.hosted &&
-			(!this.state.hostedIdentifier || this.state.hostedIdentifier.length == 0)
-		) {
-			// If the hosted service is to be used but no identifier has been specified, do not use the hosted service after all.
-			this.setState({
-				hosted: false,
-			});
-		}
-		// Build URLs to the hosted service based on the previously specified service URLs and the identifier
+		// Build URLs to the hosted service based on the previously specified service URLs
 		this.setState({
-			fetchUrl: this.props.hosted
-				? `${HOSTED_FETCH_URL}?id=${this.state.hostedIdentifier}`
-				: this.props.fetchUrl,
-			updateUrl: this.props.hosted
-				? `${HOSTED_UPDATE_URL}?id=${this.state.hostedIdentifier}`
-				: this.props.updateUrl,
+			fetchUrl: this.props.hosted ? HOSTED_FETCH_URL : this.props.fetchUrl,
+			updateUrl: this.props.hosted ? HOSTED_UPDATE_URL : this.props.updateUrl,
 		});
 	}
 
