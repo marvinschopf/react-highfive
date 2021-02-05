@@ -27,7 +27,6 @@ import PanToolIcon from "@material-ui/icons/PanTool";
 import Rewards, { RewardElement } from "rewards-lite";
 import CountUp from "react-countup";
 
-
 // Define URLs of the hosted service
 const HOSTED_FETCH_URL: string = "https://api.highfivejs.org/v1/get";
 const HOSTED_UPDATE_URL: string = "https://api.highfivejs.org/v1/update";
@@ -60,7 +59,6 @@ type HighFiveProps = {
 };
 
 export default class HighFive extends Component<HighFiveProps, HighFiveState> {
-
 	// Define default properties
 	public static defaultProps = {
 		refreshRate: 5000,
