@@ -96,7 +96,11 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 	updateCounter() {
 		// Check whether a server has been specified, if so, request the current count from the server.
 		if (this.state.fetchUrl != false) {
-			fetch(this.state.fetchUrl)
+			fetch(this.state.fetchUrl, {
+				headers: {
+					"X-Resource-ID": window.location.hostname,
+				},
+			})
 				.then((response: Response) => {
 					return response.text();
 				})
@@ -115,7 +119,11 @@ export default class HighFive extends Component<HighFiveProps, HighFiveState> {
 
 		// Check again whether a server has been specified. If so, update the counter via a simple HTTP GET ping.
 		if (this.state.updateUrl != false) {
-			fetch(this.state.updateUrl).then((response: Response) => {
+			fetch(this.state.updateUrl, {
+				headers: {
+					"X-Resource-ID": window.location.hostname,
+				},
+			}).then((response: Response) => {
 				this.setState({
 					oldCount: this.state.count,
 					count: this.state.count + 1,
