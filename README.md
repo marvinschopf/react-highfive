@@ -1,4 +1,4 @@
-# React High Five 👋
+# React High Five 👋 ![Node.js CI](https://github.com/marvinschopf/react-highfive/workflows/Node.js%20CI/badge.svg?branch=main)
 `react-highfive` is a simple React ⚛️ component that can be used to integrate an animated high-five counter into a website.  
 
 The counter is synchronised, so the number goes up for all users on the website at the same time when someone gives a high five! 👋
