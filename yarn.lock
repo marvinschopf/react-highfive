@@ -168,10 +168,10 @@ commondir@^1.0.1:
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
-countup.js@^1.9.3:
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-1.9.3.tgz#ce3e50cd7160441e478f07da31895edcc0f1c9dd"
-  integrity sha1-zj5QzXFgRB5HjwfaMYle3MDxyd0=
+countup.js@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.0.7.tgz#56b72a87fc0ee3cadb38356c246ccac88fb0a8cc"
+  integrity sha512-FO0nQdvG1iQwHp28wdvkErxnNUSbdkzztqZ6YNHKLHydngD2tdiKEW8dFrqpahF3tj+Ma70h0vyYrCBzxlVWdg==
 
 create-require@^1.1.0:
   version "1.1.1"
@@ -483,12 +483,12 @@ prop-types@^15.6.2, prop-types@^15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-react-countup@^4.3.3:
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-4.3.3.tgz#143a8d854d47290b73d6915eac20a12d839153c2"
-  integrity sha512-pWnxpwdPNRyJFha/YKKbyc4RLAw8PzmULdgCziGIgw6vxhT1VdccrvQgj38HBSoM2qF/MoLmn4M2klvDWVIdaw==
+react-countup@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-5.0.0.tgz#6c0767375a500a9ec98de5c4a88ef8b8853a8adb"
+  integrity sha512-nfskEVNHELkQ5famxdE13Xl/zODG3g67hNY4y6yhiIInonOo/b0P2yHHi7wYFaEKLixDPIQfcIzssg/jW3pYdg==
   dependencies:
-    countup.js "^1.9.3"
+    countup.js "^2.0.7"
     prop-types "^15.7.2"
     warning "^4.0.3"
 
